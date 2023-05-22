@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id : r1
+          uri : http://localhost:8082
+          predicates :
+            - Path= /customers/**
+        - id : r2
+          uri : http://localhost:8081
+          predicates :
+            - Path= /products/**
+      httpclient:
+        connect-timeout: 160000000
+        response-timeout: 160000000
+    discovery:
+      enabled: false
+server:
+  port: 8888
+
